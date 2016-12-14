@@ -6,5 +6,4 @@ Examples:
 
 ![example](examples/example_seed0_octave32.png)
 ![example](examples/example_fractal.png)
-![example](examples/example_seed0_octave16_tiling128.png)
 ![example](examples/example_threshold.png)
