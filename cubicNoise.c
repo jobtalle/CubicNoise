@@ -35,17 +35,13 @@ static float cubicNoiseInterpolate(
 cubicNoiseConfig cubicNoiseConfig1D(
 	const uint32_t seed,
 	const uint32_t octave,
-	const uint32_t length,
-	const uint32_t period,
-	const int32_t offset)
+	const uint32_t period)
 {
 	cubicNoiseConfig config;
 
 	config.seed = seed;
 	config.octave = octave;
-	config.width = length;
 	config.periodx = period / octave;
-	config.offsetx = offset;
 
 	return config;
 }
@@ -53,23 +49,15 @@ cubicNoiseConfig cubicNoiseConfig1D(
 cubicNoiseConfig cubicNoiseConfig2D(
 	const uint32_t seed,
 	const uint32_t octave,
-	const uint32_t width,
-	const uint32_t height,
 	const uint32_t periodx,
-	const uint32_t periody,
-	const int32_t offsetx,
-	const int32_t offsety)
+	const uint32_t periody)
 {
 	cubicNoiseConfig config;
 
 	config.seed = seed;
 	config.octave = octave;
-	config.width = width;
-	config.height = height;
 	config.periodx = periodx / octave;
 	config.periody = periody / octave;
-	config.offsetx = offsetx;
-	config.offsety = offsety;
 
 	return config;
 }
@@ -78,8 +66,8 @@ float cubicNoiseSample1D(
 	const cubicNoiseConfig config,
 	const float x)
 {
-	const uint32_t xi = (uint32_t)((x / config.octave) * config.width);
-	const float lerp = (x / config.octave) * config.width - xi;
+	const uint32_t xi = (uint32_t)(x / config.octave);
+	const float lerp = x / config.octave - xi;
 	
 	return cubicNoiseInterpolate(
 		cubicNoiseRandom(config.seed, cubicNoiseTile(xi - 1, config.periodx), 0),
@@ -95,10 +83,10 @@ float cubicNoiseSample2D(
 	const float y)
 {
 	uint32_t i;
-	const uint32_t xi = (uint32_t)((x / config.octave) * config.width);
-	const float lerpx = (x / config.octave) * config.width - xi;
-	const uint32_t yi = (uint32_t)((y / config.octave) * config.height);
-	const float lerpy = (y / config.octave) * config.width - yi;
+	const uint32_t xi = (uint32_t)(x / config.octave);
+	const float lerpx = x / config.octave - xi;
+	const uint32_t yi = (uint32_t)(y / config.octave);
+	const float lerpy = y / config.octave - yi;
 
 	float xSamples[4];
 
