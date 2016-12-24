@@ -1,3 +1,4 @@
+#include <math.h>
 #include "cubicNoise.h"
 
 #define CUBIC_NOISE_RAND_A 134775813
@@ -5,8 +6,8 @@
 
 static float cubicNoiseRandom(
 	uint32_t seed,
-	uint32_t x,
-	uint32_t y)
+	int32_t x,
+	int32_t y)
 {
 	return (float)
 		((((x ^ y) * CUBIC_NOISE_RAND_A) ^ (seed + x)) *
@@ -16,7 +17,7 @@ static float cubicNoiseRandom(
 
 static int32_t cubicNoiseTile(
 	const int32_t coordinate, 
-	const uint32_t period)
+	const int32_t period)
 {
 	return coordinate % period;
 }
@@ -34,8 +35,8 @@ static float cubicNoiseInterpolate(
 
 cubicNoiseConfig cubicNoiseConfig1D(
 	const uint32_t seed,
-	const uint32_t octave,
-	const uint32_t period)
+	const int32_t octave,
+	const int32_t period)
 {
 	cubicNoiseConfig config;
 
@@ -48,9 +49,9 @@ cubicNoiseConfig cubicNoiseConfig1D(
 
 cubicNoiseConfig cubicNoiseConfig2D(
 	const uint32_t seed,
-	const uint32_t octave,
-	const uint32_t periodx,
-	const uint32_t periody)
+	const int32_t octave,
+	const int32_t periodx,
+	const int32_t periody)
 {
 	cubicNoiseConfig config;
 
@@ -66,7 +67,7 @@ float cubicNoiseSample1D(
 	const cubicNoiseConfig config,
 	const float x)
 {
-	const uint32_t xi = (uint32_t)(x / config.octave);
+	const int32_t xi = (int32_t)(x / config.octave);
 	const float lerp = x / config.octave - xi;
 	
 	return cubicNoiseInterpolate(
@@ -83,13 +84,13 @@ float cubicNoiseSample2D(
 	const float y)
 {
 	uint32_t i;
-	const uint32_t xi = (uint32_t)(x / config.octave);
+	const int32_t xi = (int32_t)floorf(x / config.octave);
 	const float lerpx = x / config.octave - xi;
-	const uint32_t yi = (uint32_t)(y / config.octave);
+	const int32_t yi = (int32_t)floorf(y / config.octave);
 	const float lerpy = y / config.octave - yi;
 
 	float xSamples[4];
-
+	
 	for(i = 0; i < 4; ++i)
 		xSamples[i] = cubicNoiseInterpolate(
 			cubicNoiseRandom(config.seed,

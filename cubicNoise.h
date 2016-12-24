@@ -2,24 +2,24 @@
 
 #include <stdint.h>
 
-#define CUBIC_NOISE_PERIOD_INFINITELY UINT32_MAX
+#define CUBIC_NOISE_PERIOD_INFINITELY INT32_MAX
 
 typedef struct {
 	uint32_t seed;
-	uint32_t octave;
-	uint32_t periodx, periody;
+	int32_t octave;
+	int32_t periodx, periody;
 } cubicNoiseConfig;
 
 cubicNoiseConfig cubicNoiseConfig1D(
 	const uint32_t seed,
-	const uint32_t octave,
-	const uint32_t period);
+	const int32_t octave,
+	const int32_t period);
 
 cubicNoiseConfig cubicNoiseConfig2D(
 	const uint32_t seed,
-	const uint32_t octave,
-	const uint32_t periodx,
-	const uint32_t periody);
+	const int32_t octave,
+	const int32_t periodx,
+	const int32_t periody);
 
 float cubicNoiseSample1D(
 	const cubicNoiseConfig config,
