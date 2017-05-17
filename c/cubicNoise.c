@@ -67,7 +67,7 @@ float cubicNoiseSample1D(
 	const cubicNoiseConfig config,
 	const float x)
 {
-	const int32_t xi = (int32_t)(x / config.octave);
+	const int32_t xi = (int32_t)floorf(x / config.octave);
 	const float lerp = x / config.octave - xi;
 	
 	return cubicNoiseInterpolate(
