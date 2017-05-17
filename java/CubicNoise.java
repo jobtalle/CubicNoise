@@ -1,5 +1,3 @@
-package noise;
-
 public final class CubicNoise {
     private static final int RND_A = 134775813;
     private static final int RND_B = 1103515245;
