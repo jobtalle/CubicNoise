@@ -54,7 +54,7 @@ public final class CubicNoise {
         return interpolate(xSamples[0], xSamples[1], xSamples[2], xSamples[3], lerpy) * 0.5f + 0.25f;
     }
 
-    private static float randomize(final int seed, int x, int y)
+    private static float randomize(final int seed, final int x, final int y)
     {
         return (float) ((((x ^ y) * RND_A) ^ (seed + x)) * (((RND_B * x) << 16) ^ (RND_B * y) - RND_A)) / Integer.MAX_VALUE;
     }
