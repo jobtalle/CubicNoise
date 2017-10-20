@@ -30,7 +30,8 @@ static float cubicNoiseInterpolate(
 	const float x)
 {
 	const float p = (d - c) - (a - b);
-	return x * x * x * p + x * x * ((a - b) - p) + x * (c - a) + b;
+	
+	return x * (x * (x * p + ((a - b) - p)) + (c - a)) + b;
 }
 
 cubicNoiseConfig cubicNoiseConfig1D(
