@@ -41,13 +41,3 @@ float cubicNoise(vec3 at) {
         sampleY(vec3(at.xy, floored + 2.0)),
         fract(at.z));
 }
-
-void mainImage(out vec4 fragColor, in vec2 fragCoord )
-{
-    vec2 uv = fragCoord/iResolution.xy;
-    vec2 coords = fragCoord.xy * 0.01 * vec2(1.0, 1.0);
-
-    float n = cubicNoise(vec3(coords, iTime));
-    
-    fragColor = vec4(vec3(n), 1.0);
-}
