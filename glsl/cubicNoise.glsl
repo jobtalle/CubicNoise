@@ -1,6 +1,5 @@
-float random(vec3 x)
-{
-    return fract(sin(x.x + x.y * 57.0 + 113.0 * x.z) * 43758.5453);
+float random(vec3 x) {
+    return fract(sin(x.x + x.y * 57.0 + x.z * 113.0) * 43758.5453);
 }
 
 float interpolate(float a, float b, float c, float d, float x) {
