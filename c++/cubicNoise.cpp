@@ -12,7 +12,7 @@ float CubicNoise::sample(const CubicNoiseConfig &config, const float x)
 		random(config.seed, tile(xi, config.periodx), 0),
 		random(config.seed, tile(xi + 1, config.periodx), 0),
 		random(config.seed, tile(xi + 2, config.periodx), 0),
-		lerp) * 0.75f + 0.125f;
+		lerp) * 0.666666f + 0.166666f;
 }
 
 float CubicNoise::sample(const CubicNoiseConfig &config, const float x, const float y)
