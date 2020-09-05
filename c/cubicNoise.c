@@ -76,7 +76,7 @@ float cubicNoiseSample1D(
 		cubicNoiseRandom(config.seed, cubicNoiseTile(xi, config.periodx), 0),
 		cubicNoiseRandom(config.seed, cubicNoiseTile(xi + 1, config.periodx), 0),
 		cubicNoiseRandom(config.seed, cubicNoiseTile(xi + 2, config.periodx), 0),
-		lerp) * 0.5f + 0.25f;
+		lerp) * 0.666666f + 0.166666f;
 }
 
 float cubicNoiseSample2D(
