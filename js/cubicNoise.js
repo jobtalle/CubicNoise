@@ -48,7 +48,7 @@ function cubicNoiseSample1(config, x) {
 		randomize(config.seed, tile(xi, config.periodX), 0),
 		randomize(config.seed, tile(xi + 1, config.periodX), 0),
 		randomize(config.seed, tile(xi + 2, config.periodX), 0),
-		lerp) * 0.5 + 0.25;
+		lerp) * 0.666666 + 0.166666;
 }
 
 /**
