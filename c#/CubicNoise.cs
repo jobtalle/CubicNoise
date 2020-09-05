@@ -54,7 +54,7 @@ public sealed class CubicNoise
 					randomize(seed, tile(xi + 2, periodx), tile(yi - 1 + i, periody)),
 					lerpx);
 
-		return interpolate(xSamples[0], xSamples[1], xSamples[2], xSamples[3], lerpy) * 0.5f + 0.25f;
+		return interpolate(xSamples[0], xSamples[1], xSamples[2], xSamples[3], lerpy) * 0.666666f + 0.166666f;
 	}
 
 	private static float randomize(int seed, int x, int y)
