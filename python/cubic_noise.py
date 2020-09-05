@@ -31,7 +31,7 @@ def _sample1d(x, seed=SEED, octave=1):
                 randomize(tile(xi, periodx), 0, seed),
                 randomize(tile(xi + 1, periodx), 0, seed),
                 randomize(tile(xi + 2, periodx), 0, seed),
-                lerp) * 0.5 + 0.25;
+                lerp) * 0.666666 + 0.166666;
 
 def _sample2d(x, y, seed=SEED, octave=1):
     xi = floor(x / octave)
