@@ -31,7 +31,7 @@ public final class CubicNoise {
                 randomize(seed, tile(xi, periodx), 0),
                 randomize(seed, tile(xi + 1, periodx), 0),
                 randomize(seed, tile(xi + 2, periodx), 0),
-                lerp) * 0.75f + 0.125f;
+                lerp) * 0.666666f + 0.166666f;
     }
 
     public float sample(final float x, final float y)
